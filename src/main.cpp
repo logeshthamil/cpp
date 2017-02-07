@@ -16,7 +16,8 @@ int main()
     LightLDAWrapper llda;
 //    llda.generate_libsvm_inputs(corpus_path, data_path);
 //    llda.generate_binary_from_libsvm(data_path, light_lda_path);
-    llda.apply_lda_on_binary(data_path, light_lda_path);
+//    llda.apply_lda_on_binary(data_path, light_lda_path);
+    llda.get_gamma_lambda(light_lda_path);
     return 0;
 }
 

@@ -7,7 +7,7 @@
 #include <map>
 #include "LightLDAWrapper.h"
 #include <boost/algorithm/string.hpp>
-//#include "boost/filesystem.hpp"
+#include "boost/filesystem.hpp"
 
 void get_unique_words(std::string corpus_file, std::string vocab_file)
 {
@@ -109,19 +109,23 @@ void LightLDAWrapper::generate_binary_from_libsvm(std::string output_data_path, 
 void LightLDAWrapper::apply_lda_on_binary(std::string output_data_path, std::string lda_path) {
     std::cout << "Aplly LightLDA on binary inputs" << std::endl;
 
-//    std::string apply_lda = "./lightlda -num_vocabs 9000 -num_topics 50 -num_iterations 50 -alpha 0.01 "
-//                                    "-beta 0.1 -max_num_document 5000 -input_dir " + output_data_path;
-//    chdir(lda_path.c_str());
-//    system(apply_lda.c_str());
-    std::cout << lda_path;
-//    boost::filesystem::copy_directory()
-//    std::string from_1 = lda_path + "doc_topic.0";
-//    std::string from_2 = lda_path + "server_0_table_0.model";
-//    std::string from_3 = lda_path + "server_0_table_1.model";
-//    std::string to_1 = output_data_path + "doc_topic.0";
-//    std::string to_2 = output_data_path + "server_0_table_0.model";
-//    std::string to_3 = output_data_path + "server_0_table_1.model";
-//    boost::filesystem::copy_file(from_1, to_1);
-//    boost::filesystem::copy_file(from_2, to_2);
-//    boost::filesystem::copy_file(from_3, to_3);
+    std::string apply_lda = "./lightlda -num_vocabs 9000 -num_topics 50 -num_iterations 50 -alpha 0.01 "
+                                    "-beta 0.1 -max_num_document 5000 -input_dir " + output_data_path;
+    chdir(lda_path.c_str());
+    system(apply_lda.c_str());
+    std::string from_1 = lda_path + "doc_topic.0";
+    std::string from_2 = lda_path + "server_0_table_0.model";
+    std::string from_3 = lda_path + "server_0_table_1.model";
+    std::string to_1 = output_data_path + "doc_topic.0";
+    std::string to_2 = output_data_path + "server_0_table_0.model";
+    std::string to_3 = output_data_path + "server_0_table_1.model";
+    boost::filesystem::copy_file(from_1, to_1);
+    boost::filesystem::copy_file(from_2, to_2);
+    boost::filesystem::copy_file(from_3, to_3);
+}
+
+
+void LightLDAWrapper::get_gamma_lambda(std::string lda_path) {
+    std::cout << "Get gamma and lambda from the output of lda" << std::endl;
+
 }
