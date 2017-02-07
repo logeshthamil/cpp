@@ -124,6 +124,12 @@ void LightLDAWrapper::apply_lda_on_binary(std::string output_data_path, std::str
     std::string to_1 = output_data_path + "doc_topic.0";
     std::string to_2 = output_data_path + "server_0_table_0.model";
     std::string to_3 = output_data_path + "server_0_table_1.model";
+    if (boost::filesystem::exists(to_1))
+        boost::filesystem::remove(to_1);
+    if (boost::filesystem::exists(to_2))
+        boost::filesystem::remove(to_2);
+    if (boost::filesystem::exists(to_3))
+        boost::filesystem::remove(to_3);
     boost::filesystem::copy_file(from_1, to_1);
     boost::filesystem::copy_file(from_2, to_2);
     boost::filesystem::copy_file(from_3, to_3);
