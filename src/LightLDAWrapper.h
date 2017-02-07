@@ -18,7 +18,7 @@ public:
     void generate_binary_from_libsvm(std::string output_data_path, std::string lda_path);
     void apply_lda_on_binary(std::string output_data_path, std::string lda_path);
 
-    void get_gamma_lambda(std::string lda_path);
+    void get_gamma_lambda(std::string output_data_path);
 
 };
 
