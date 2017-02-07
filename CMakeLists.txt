@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.1)
 project(First_project)
 set(CMAKE_CXX_STANDARD 11)
 
-set(SOURCE_FILES src/main.cpp src/LightLDAWrapper.cpp src/LightLDAWrapper.h src/zipfor.h)
+set(SOURCE_FILES src/main.cpp src/LightLDAWrapper.cpp src/LightLDAWrapper.h)
 add_executable(First_project ${SOURCE_FILES})
 find_package(Boost 1.58	COMPONENTS
         filesystem

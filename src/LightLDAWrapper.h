@@ -8,11 +8,6 @@
 
 
 class LightLDAWrapper {
-private:
-    std::string corpus_path;
-    std::string lda_path;
-    std::string output_data_path;
-
 public:
     void generate_libsvm_inputs(std::string corpus_path, std::string output_data_path);
     void generate_binary_from_libsvm(std::string output_data_path, std::string lda_path);

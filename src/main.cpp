@@ -6,7 +6,6 @@
 #include "LightLDAWrapper.h"
 #include <vector>
 #include <map>
-#include <string>
 #include <algorithm>
 
 class CLParser {
@@ -15,8 +14,6 @@ public:
     CLParser(int argc_, char *argv_[], bool switches_on_ = false);
 
     ~CLParser() {}
-
-    std::string get_arg(int i);
 
     std::string get_arg(std::string s);
 
@@ -55,12 +52,6 @@ CLParser::CLParser(int argc_, char *argv_[], bool switches_on_) {
     }
 }
 
-std::string CLParser::get_arg(int i) {
-    if (i >= 0 && i < argc)
-        return argv[i];
-
-    return "";
-}
 
 std::string CLParser::get_arg(std::string s) {
     if (!switches_on) return "";
