@@ -32,12 +32,12 @@ void get_unique_words(std::string corpus_file, std::string vocab_file)
     }
 
     fs.close();
-    for (std::map <std::string, int> :: iterator p = mp.begin();
-         p != mp.end(); p++)
+    for (const auto &p : mp)
     {
 //        std::cout << p->first << "\t" << std::to_string(p->second) << std::endl;
-        of << p->first << std::endl;
+        of << p.first << std::endl;
     }
+
 }
 
 double sum_vector(std::vector<int> const &v) {
