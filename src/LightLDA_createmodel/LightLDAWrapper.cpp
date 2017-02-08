@@ -46,8 +46,8 @@ double sum_vector(std::vector<int> const &v) {
 
 void LightLDAWrapper::generate_libsvm_inputs(std::string corpus_path, std::string output_data_path) {
     std::cout << "Converting the standard corpus to libsvm format to use it as input of light lda" << std::endl;
-    std::string libsvm_vocab_path = output_data_path + "libsvm_vocab.dat";
-    std::string libsvm_corpus_path = output_data_path + "libsvm_corpus.dat";
+    std::string libsvm_vocab_path = output_data_path + "libsvm_vocab_model.dat";
+    std::string libsvm_corpus_path = output_data_path + "libsvm_corpus_model.dat";
     std::fstream corpus_ip(corpus_path);
     std::ofstream libsvmvocab_op(libsvm_vocab_path);
     std::ofstream libsvmcorpus_op(libsvm_corpus_path);
@@ -101,8 +101,8 @@ void LightLDAWrapper::generate_libsvm_inputs(std::string corpus_path, std::strin
 
 void LightLDAWrapper::generate_binary_from_libsvm(std::string output_data_path, std::string lda_path) {
     std::cout << "Generate the binary inputs from the libsvm format inputs" << std::endl;
-    std::string libsvm_vocab_path = output_data_path + "libsvm_vocab.dat";
-    std::string libsvm_corpus_path = output_data_path + "libsvm_corpus.dat";
+    std::string libsvm_vocab_path = output_data_path + "libsvm_vocab_model.dat";
+    std::string libsvm_corpus_path = output_data_path + "libsvm_corpus_model.dat";
 //    std::cout << output_data_path << std::endl;
     auto convert_to_bin = "./dump_binary " + libsvm_corpus_path + " " + libsvm_vocab_path + " " + output_data_path + " 0";
     char *convertbin = &convert_to_bin[0u];
@@ -112,7 +112,7 @@ void LightLDAWrapper::generate_binary_from_libsvm(std::string output_data_path, 
 
 
 void LightLDAWrapper::apply_lda_on_binary(std::string output_data_path, std::string lda_path) {
-    std::cout << "Aplly LightLDA on binary inputs" << std::endl;
+    std::cout << "Apply LightLDA on binary inputs" << std::endl;
 
     std::string apply_lda = "./lightlda -num_vocabs 9000 -num_topics 50 -num_iterations 50 -alpha 0.01 "
                                     "-beta 0.1 -max_num_document 5000 -input_dir " + output_data_path;
@@ -121,7 +121,7 @@ void LightLDAWrapper::apply_lda_on_binary(std::string output_data_path, std::str
     std::string from_1 = lda_path + "doc_topic.0";
     std::string from_2 = lda_path + "server_0_table_0.model";
     std::string from_3 = lda_path + "server_0_table_1.model";
-    std::string to_1 = output_data_path + "doc_topic.0";
+    std::string to_1 = output_data_path + "doc_topic_model.0";
     std::string to_2 = output_data_path + "server_0_table_0.model";
     std::string to_3 = output_data_path + "server_0_table_1.model";
     if (boost::filesystem::exists(to_1))
@@ -138,9 +138,9 @@ void LightLDAWrapper::apply_lda_on_binary(std::string output_data_path, std::str
 
 void LightLDAWrapper::get_gamma_lambda(std::string output_data_path) {
     std::cout << "Get gamma and lambda from the output of lda" << std::endl;
-    std::string gamma_path = output_data_path + "gamma.dat";
-    std::string lambda_path = output_data_path + "lambda.dat";
-    std::string doc_topic_hashed_path = output_data_path + "doc_topic.0";
+    std::string gamma_path = output_data_path + "gamma_model.dat";
+    std::string lambda_path = output_data_path + "lambda_model.dat";
+    std::string doc_topic_hashed_path = output_data_path + "doc_topic_model.0";
     std::string topic_word_hashed_path = output_data_path + "server_0_table_0.model";
     std::string total_topic_hashed_path = output_data_path + "server_0_table_1.model";
     std::fstream doc_topic_ip(doc_topic_hashed_path);
