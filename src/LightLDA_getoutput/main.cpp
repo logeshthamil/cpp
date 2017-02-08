@@ -6,6 +6,7 @@
 #include <vector>
 #include <map>
 #include <algorithm>
+#include "LightLDA_getoutput.h"
 
 class CLParser {
 public:
@@ -80,12 +81,16 @@ int main(int argc, char *argv[]) {
     auto c = cmd_line.get_arg("-output_path");
     if (c != "") data_path = temp;
 
-//    a = "/home/lt/quanox/First_project/data/tf.dat";
+//    a = "/home/lt/quanox/First_project/data/tf_test.dat";
 //    c = "/home/lt/quanox/First_project/data/";
 //    b = "/home/lt/recommendation-python/Profiling_for_rtl/gender_prediction/lightlda/bin/";
 
     if (a != "" && b != "" && c != "") {
-        std::cout << "Vanakkam chennai" << std::endl;
+        LightLDA_getoutput llda;
+        llda.generate_libsvm_inputs(a, c);
+        llda.generate_binary_from_libsvm(c, b);
+        llda.apply_lda_on_binary(c, b);
+        llda.get_gamma_lambda(c);
     } else {
         std::cout << "Please give the valid parameters" << std::endl;
     }
