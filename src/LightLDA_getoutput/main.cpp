@@ -98,4 +98,4 @@ int main(int argc, char *argv[]) {
 
 }
 
-// "Usage"   ./First_project -corpus_file "/home/lt/quanox/First_project/data/tf.dat" -lda_path "/home/lt/recommendation-python/Profiling_for_rtl/gender_prediction/lightlda/bin/" -output_path "/home/lt/quanox/First_project/data/"
+// "Usage"   ./get_output -corpus_file "/home/lt/quanox/First_project/data/tf_output.dat" -lda_path "/home/lt/recommendation-python/Profiling_for_rtl/gender_prediction/lightlda/bin/" -output_path "/home/lt/quanox/First_project/data/"

@@ -125,7 +125,7 @@ void LightLDA_getoutput::get_gamma_lambda(std::string output_data_path) {
     std::cout << "Get gamma and lambda from the output of lda" << std::endl;
     std::string gamma_path = output_data_path + "gamma_output.dat";
     std::string doc_topic_hashed_path = output_data_path + "doc_topic_output.0";
-    std::string total_topic_hashed_path = output_data_path + "server_0_table_1.output";
+    std::string total_topic_hashed_path = output_data_path + "server_0_table_1.model";
     std::fstream doc_topic_ip(doc_topic_hashed_path);
     std::ofstream doc_topic_out(gamma_path);
     std::fstream total_topic_ip(total_topic_hashed_path);
